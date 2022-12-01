@@ -72,3 +72,10 @@ def addItemInStore(storeName,itemName):
     print("Store is not found !!")
     return stores
 
+@app.post("/<string:storeName>/getItems")
+def getStoreItems(storeName):
+    for store in stores:
+        if(store['name']==storeName):
+            return store['items']
+    return "store not exist" , 404
+
